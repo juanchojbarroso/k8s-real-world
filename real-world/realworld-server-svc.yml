@@ -1,0 +1,18 @@
+# Service to expose backend
+# kubectl apply -f realworld-server-svc.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: realworld-server
+  namespace: realworld
+  labels:
+    app: realworld-server
+    tier: backend
+spec:
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
+  selector:
+    app: realworld-server
+    tier: backend
