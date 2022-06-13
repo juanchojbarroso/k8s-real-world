@@ -1,0 +1,18 @@
+# Service to expose frontend
+# kubectl apply -f realworld-client-svc.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: realworld-client
+  namespace: realworld
+  labels:
+    app: realworld-client
+    tier: frontend
+spec:
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: realworld-client
+    tier: frontend

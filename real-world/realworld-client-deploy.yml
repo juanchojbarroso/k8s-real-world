@@ -1,0 +1,37 @@
+# Application to deploy
+# kubectl apply -f realworld-client-svc.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: realworld-client
+  namespace: realworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: realworld-client
+  template:
+    metadata:
+      labels:
+        app: realworld-client
+        tier: frontend
+        track: stable
+        service: realworld-client
+    spec:
+      containers:
+      - name: realworld-client
+        image: juanchojbarroso/react-redux:v1
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 3000
+        env:
+          - name: API_ROOT
+            value: "http://realworld-server.realworld:8000/api"
+        resources:
+          requests:
+            cpu: 250m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 384Mi
