@@ -1,0 +1,7 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: realworld
+  labels:
+    name: realworld
+# kubectl apply -f realworld-ns.yml
