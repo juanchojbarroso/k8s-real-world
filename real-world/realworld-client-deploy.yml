@@ -1,5 +1,5 @@
 # Application to deploy
-# kubectl apply -f realworld-client-svc.yml
+# kubectl apply -f realworld-client-deploy.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,14 +20,14 @@ spec:
     spec:
       containers:
       - name: realworld-client
-        image: juanchojbarroso/react-redux:v1
+        image: juanchojbarroso/realworld-client
         imagePullPolicy: Always
         ports:
         - name: http
-          containerPort: 3000
+          containerPort: 4100
         env:
           - name: API_ROOT
-            value: "http://realworld-server.realworld:8000/api"
+            value: "realworld-server.realworld.svc.cluster.local/api"
         resources:
           requests:
             cpu: 250m
