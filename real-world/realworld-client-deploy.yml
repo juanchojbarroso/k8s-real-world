@@ -26,12 +26,5 @@ spec:
         - name: http
           containerPort: 4100
         env:
-          - name: API_ROOT
-            value: "realworld-server.realworld.svc.cluster.local/api"
-        resources:
-          requests:
-            cpu: 250m
-            memory: 128Mi
-          limits:
-            cpu: 500m
-            memory: 384Mi
+          - name: REACT_APP_API_URL
+            value: realworld-server.realworld.svc.cluster.local
